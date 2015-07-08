@@ -69,3 +69,22 @@ train$Child[train$Age >= 18] <- 0 # passanger is not a child
 prop.table(table(train$Child, train$Survived),1)
 
 
+# Your train and test set are still loaded in
+str(train)
+str(test)
+
+# prediction based on gender 
+test_one <- test
+
+test_one$Survived <- NA
+
+str(test_one)
+
+# prediction based on gender
+# male[2] = 0 and female[1] = 1
+
+test_one$Survived[test_one$Sex == 'male'] <- 0
+
+test_one$Survived[test_one$Sex == 'female'] <- 1
+
+str(test_one)

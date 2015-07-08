@@ -1,9 +1,71 @@
+# BACK TO BASICS
+
+# Calculate 3 + 4
+3 + 4
+
+# Calculate 6 + 12
+6 + 12
+
+# Assign the training set
+train <- read.csv(url("http://s3.amazonaws.com/assets.datacamp.com/course/Kaggle/train.csv"))
+  
+# Assign the testing set
+test <- read.csv(url("http://s3.amazonaws.com/assets.datacamp.com/course/Kaggle/test.csv"))
+  
+# Make sure to have a look at your training and testing set
+print(train)
+print(test)
+
 # Your train and test set are still loaded in
 str(train)
 str(test)
 
+# absolute numbers
+#table(train$Survived)
+# percentages
+#prop.table(table(train$Survived))
+
+# row-wise proportions
+#prop.table(table(<var_1>, <var_2>),1)
+# column-wise proportions
+#prop.table(table(<var_1>, <var_2>),2)
+
+
+
 # Passengers that survived vs passengers that passed away
 
+prop.table(table(train$Survived))
+table(train$Survived)
 
-  
 # Males & females that survived vs males & females that passed away
+
+# column-wise proportions: prop.table(table(<var_1>, <var_2>),2)
+
+table(train$Sex,train$Survived)
+prop.table(table(train$Sex,train$Survived),1)
+
+
+# Your train and test set are still loaded in
+str(train)
+str(test)
+
+# Create the column child, and indicate whether child or no child
+
+#To add this new variable you need to do two things (i) create a new column, and (ii) provide the values for each observation (i.e., row) based on the age of the passenger
+
+train$new <- 10
+#would create a new column in the train data frame with the value 10 for each observation.
+
+#To set the values based on the age of the passenger, you make use of a boolean test inside the square bracket operator. With the []-operator you create a subset of rows and assign a value to a certain variable of that subset of observations. For example,
+
+train$new[train$Survived == 1] <- 0
+
+train$Child <- NA
+train$Child[train$Age < 18] <- 1 # passanger is a child
+train$Child[train$Age >= 18] <- 0 # passanger is not a child
+
+# Two-way comparison
+
+prop.table(table(train$Child, train$Survived),1)
+
+

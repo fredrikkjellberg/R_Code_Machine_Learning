@@ -146,3 +146,16 @@ library(RColorBrewer)
 
 # Time to plot your fancified tree
 fancyRpartPlot(my_tree_two)
+
+
+# Make your prediction using the test set
+my_prediction <- predict(my_tree_two, test, type="class")
+str(my_prediction)
+
+# Create a data frame with two columns: PassengerId & Survived. Survived contains your predictions
+my_solution <-  data.frame(my_prediction)
+
+# Check that your data frame has 418 entries
+
+# Write your solution to a csv file with the name my_solution.csv
+#write.csv(___, ___ , ___)

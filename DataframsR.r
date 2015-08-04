@@ -29,6 +29,7 @@ planets_df  <-data.frame(planets,type,diameter,rotation,rings)
 
 #Similar to vectors and matrices, you select elements from a data frame with the help of square brackets [ ]. By using a comma, you can indicate what to select from the rows and the columns respectively. For example:
 my_data_frame[1,2] #selects from the first row in my_data_frame the second element.
+#my_data_fram[row,column]
 my_data_frame[1:3,2:4] #selects rows 1,2,3 and columns 2,3,4 in my_data_frame.
 #Sometimes you want to select all elements of a row or column. To do this, you can use the follwing. my_data_frame[1, ] selects all elements of the first row. Let us now apply this technique on planets_df!
 
@@ -44,3 +45,10 @@ furthest_planets_df <- planets_df[6:8,]
 closest_planets_df
 furthest_planets_df
 
+#Maybe you want to select only the first 3 elements of the variable 'type'. One way to do this is: 
+planets_df[1:3,1] #. A possible disadvantage of this approach is that you have to know (or look up) the position of the variable 'type', which gets hard if you have a lot of variables. It is often easier to just make use of the variable name, e.g. 
+planets_df[1:3,"type"]. # where type = type in datafram
+
+#so for exmaple if I want to select last 6 from diam
+# Do selection on both rows and columns
+furthest_planets_diameter <- planets_df[3:8,"diameter"]
